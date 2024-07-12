@@ -5,6 +5,11 @@ import { Home } from "lucide-react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Layout from "./layouts/default"; // available: default, navbar, sidebar
 import Index from "./pages/Index.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+import HomeSection from "./pages/Home.jsx";
+import Analytics from "./pages/Analytics.jsx";
+import Settings from "./pages/Settings.jsx";
+
 const queryClient = new QueryClient();
 
 export const navItems = [
@@ -24,7 +29,11 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<Index />} />
-              {/* Add more routes here as needed */}
+              <Route path="dashboard" element={<Dashboard />}>
+                <Route path="home" element={<HomeSection />} />
+                <Route path="analytics" element={<Analytics />} />
+                <Route path="settings" element={<Settings />} />
+              </Route>
             </Route>
           </Routes>
         </Router>
